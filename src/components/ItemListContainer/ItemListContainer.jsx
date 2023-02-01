@@ -1,4 +1,4 @@
-const ItemListContainer = () => {
+const ItemListContainer = ({saludo}) => {
     return (
         <div>
             <h1
@@ -9,7 +9,7 @@ const ItemListContainer = () => {
                     fontWeight: 900
                 }}
                 >
-                ¡Bienvenido!
+                { saludo }
             </h1>
         </div>
     );

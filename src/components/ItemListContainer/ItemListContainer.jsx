@@ -1,19 +1,22 @@
-const ItemListContainer = ({saludo}) => {
+
+
+import {useState,useEffect} from 'react'
+import {ItemList} from '../ItemList/ItemList'
+export const ItemListContainer = () => {
+    const [productos, setProductos] = useState ([])
+    useEffect (() => {
+        fetch("./json/productos.json")
+        .then (response => response.json())
+        .then (productos => {
+            const productosList = ItemList ({productos})
+            console.log (productosList)
+            setProductos(productosList)
+        })
+
+    }, [] )
     return (
-        <div>
-            <h1
-                style={{
-                    padding: 10,
-                    color: "black",
-                    fontSize: 30,
-                    fontWeight: 900
-                }}
-                >
-                { saludo }
-            </h1>
+        <div className = "row productos">
+            {productos}
         </div>
     );
 }
-
-
-export default ItemListContainer;

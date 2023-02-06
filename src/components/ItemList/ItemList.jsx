@@ -1,8 +1,8 @@
 import { Item } from "../Item/Item"
-export const ItemList = ({ productos }) => {
+export const ItemList = ({ products }) => {
     return (
         <>
-            {productos.map(producto => <Item item={producto} key={producto.id} />)}
+            {products.map(producto => <Item item={producto} key={producto.id} />)}
         </>
     )
 }

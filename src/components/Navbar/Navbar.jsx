@@ -1,6 +1,6 @@
 import CardWidget from "../CardWidget/CardWidget";
+import Secciones from "./Secciones/Secciones";
 import Categorias from "./Categorias/Categorias";
-import {ItemCount} from "../ItemCount/ItemCount";
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg bg-dark d-flex">
@@ -13,13 +13,12 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active text-light" href="/#" aria-current="page"><button className="btn btn-info">Inicio</button></a>
                             </li>
+                            <Secciones/>
                             <Categorias />
                         </ul>
                     </div>
                 <CardWidget cantidadCart={3} />
-                <ItemCount valorInicial={1} stock={5}/>
             </div>
         </nav>
     )

@@ -6,9 +6,9 @@ const Categorias = () => {
                     <button className="btn btn-info">Todas las Categorías</button>
                 </a>
                 <ul className="dropdown-menu">
-                    <li><Link className="dropdown-item text-light" to="/category/1" >Consolas</Link></li>
-                    <li><Link className="dropdown-item text-light" to="/category/2" >Videojuegos</Link></li>
-                    <li><Link className="dropdown-item text-light" to="/category/3">Periféricos</Link></li>
+                    <li><Link className="dropdown-item text-light" to="/category/Consolas" >Consolas</Link></li>
+                    <li><Link className="dropdown-item text-light" to="/category/Videojuegos" >Videojuegos</Link></li>
+                    <li><Link className="dropdown-item text-light" to="/category/Periféricos">Periféricos</Link></li>
                 </ul>
             </li>
     );

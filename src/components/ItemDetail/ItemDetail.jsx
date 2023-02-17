@@ -1,5 +1,9 @@
 import { ItemCount } from '../ItemCount/ItemCount'
 export const ItemDetail = ({ item }) => {
+    const onAdd = (cantidad) => { //Agregar el producto al carrito
+        console.log(cantidad)
+        console.log(item)
+    }
     return (
         <div className='row g-0'>
             <div className="col-md-4">
@@ -11,7 +15,7 @@ export const ItemDetail = ({ item }) => {
                     <p className='card-text'>{item.descripcion}</p>
                     <p className='card-text'>Precio EUR: {new Intl.NumberFormat('de-DE').format(item.precio)}</p>
                     <p className='card-text'>Stock: {item.stock}</p>
-                    <ItemCount valorInicial={1} stock={item.stock} />
+                    <ItemCount valorInicial={1} stock={item.stock} onAdd={onAdd}/>
                     <button className='btn btn-secondary'>Finalizar Compra</button>
                 </div>
             </div>

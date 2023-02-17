@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom"
+
 const CardWidget = ({cantidadCart}) => {
     return (
         <div className="d-flex">
-            <i className="bi bi-cart-fill text-warning" style={{fontSize:'2em'}}></i>
-            <p className="text-success">{cantidadCart}</p>
+            <Link className= "nav-link" to={'/cart'}><button className="bi bi-cart-fill text-warning" style={{fontSize:'2em'}}></button></Link>
+            <p>{cantidadCart}</p>
         </div>
     );
 }

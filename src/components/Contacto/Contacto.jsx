@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify'
 
 export const Contacto = () => {
     const datosFormulario = React.useRef() //Creo la referencia
@@ -12,9 +12,12 @@ export const Contacto = () => {
         const contacto = Object.fromEntries(datForm) //Transforma en un objeto literal
         console.log(contacto)
         e.target.reset() //Reseteo el formulario
+        toast.success("¡Forlumario enviado exitosamente!", {
+            pauseOnHover: false,
+            theme: "dark",
+        }); //Toastify
         navigate("/")//Redirijo a pagina inicial
     }
-
 
     return (
         <div className="container d-flex justify-content-center" style={{ marginTop: "2em" }}>

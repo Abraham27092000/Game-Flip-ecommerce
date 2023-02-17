@@ -1,5 +1,10 @@
 import './App.css'
+import 'react-toastify/dist/ReactToastify.css'
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+//Toastify
+import { ToastContainer } from 'react-toastify';
 
 //Componentes
 import Navbar from "./Navbar/Navbar";
@@ -9,23 +14,24 @@ import { Contacto } from "./Contacto/Contacto";
 import { Cart } from './Cart/Cart';
 
 //Context
-import {DarkModeProvider} from '../Context/DarkModeContext'
+import { CartProvider } from '../context/CartContext';
 
 const App = () => {
   console.log(document.getElementById("boton1"))
   return (
     <>
       <BrowserRouter>
-      <DarkModeProvider>
-        <Navbar />
-        <Routes>
-          <Route path ='/' element = {<ItemListContainer/>}/>
-          <Route path ='/item/:id' element = {<ItemDetailContainer/>}/>
-          <Route path ='/category/:idCategoria' element = {<ItemListContainer/>}/>
-          <Route path ='/contacto' element = {<Contacto/>}/>
-          <Route path ='/cart' element={<Cart/>}/>
-        </Routes>
-        </DarkModeProvider>
+        <CartProvider>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<ItemListContainer />} />
+            <Route path='/item/:id' element={<ItemDetailContainer />} />
+            <Route path='/category/:idCategoria' element={<ItemListContainer />} />
+            <Route path='/contacto' element={<Contacto />} />
+            <Route path='/cart' element={<Cart />} />
+          </Routes>
+          <ToastContainer />
+        </CartProvider>
       </BrowserRouter>
     </>
   );

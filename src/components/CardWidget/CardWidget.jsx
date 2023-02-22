@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom"
+import { useCartContext } from "../../context/CartContext"
 
-const CardWidget = ({cantidadCart}) => {
+const CardWidget = () => {
+    const { getItemQuantity } = useCartContext()
     return (
-        <div className="d-flex">
-            <Link className= "nav-link" to={'/cart'}><button className="bi bi-cart-fill text-warning" style={{fontSize:'2em'}}></button></Link>
-            <p>{cantidadCart}</p>
-        </div>
+        <>
+            <Link className="nav-link" to={'/cart'}><button className="bi bi-cart-fill text-warning" style={{ fontSize: '2em' }}></button>
+                {getItemQuantity() > 0 && <span className="text-success">{getItemQuantity()}</span>}
+            </Link>
+        </>
     );
 }
 

@@ -1,6 +1,8 @@
 import './App.css'
 import 'react-toastify/dist/ReactToastify.css'
 
+//Router
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 //Toastify
@@ -17,7 +19,7 @@ import { Cart } from './Cart/Cart';
 import { CartProvider } from '../context/CartContext';
 
 const App = () => {
-  console.log(document.getElementById("boton1"))
+
   return (
     <>
       <BrowserRouter>

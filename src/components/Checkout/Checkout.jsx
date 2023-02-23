@@ -1,12 +1,12 @@
 import { useCartContext } from "../../context/CartContext"
 import { Link } from "react-router-dom"
-import React from "react"
+import  React  from "react"
 import { useNavigate } from "react-router-dom"
-import { toast } from 'react-toastify'
-import { createOrdenCompra, getOrdenCompra, getProducto, updateProducto } from "../../firebase/firebase"
+import {toast} from 'react-toastify'
+import { createOrdenCompra, getProducto, updateProducto } from "../../firebase/firebase"
 
 export const Checkout = () => {
-    const { carrito, emptyCart, totalPrice } = useCartContext()
+    const { cart, emptyCart, totalPrice } = useCartContext()
     const datosFormulario = React.useRef()
     let navigate = useNavigate()
 
@@ -15,7 +15,7 @@ export const Checkout = () => {
         const datForm = new FormData(datosFormulario.current)
         const cliente = Object.fromEntries(datForm)
 
-        const aux = [...carrito]
+        const aux = [...cart]
 
         aux.forEach(prodCarrito => {
             getProducto(prodCarrito.id).then(prodBDD => {
@@ -25,8 +25,8 @@ export const Checkout = () => {
         })
 
         createOrdenCompra(cliente, aux, totalPrice(), new Date().toISOString()).then(ordenCompra => {
-            toast.success(`¡Muchas gracias por comprar con nosotros!, su orden de compra con el ID: ${ordenCompra.id
-                } por un total de $ ${new Intl.NumberFormat('de-DE').format(totalPrice())} fue realizada con exito`)
+            toast.success(`¡Gracias por su compra!. Id de compra: ${ordenCompra.id
+                } por un total de EUR ${new Intl.NumberFormat('de-DE').format(totalPrice())} fue realizada con exito`)
             emptyCart()
             e.target.reset()
             navigate("/")
@@ -37,37 +37,34 @@ export const Checkout = () => {
 
     return (
         <>
-            {carrito.length === 0
+            {cart.length === 0
                 ?
                 <>
                     <h2>No posee productos en el carrito</h2>
                     <Link className="nav-link" to={'/'}><button className="btn btn-dark">Continuar comprando</button></Link>
                 </>
                 :
-                <div className="container" style={{ marginTop: "20px" }}>
+                <div className="container d-flex justify-content-center" style={{ marginTop: "2em" }}>
                     <form onSubmit={consultarFormulario} ref={datosFormulario}>
                         <div className="mb-3">
-                            <label htmlFor="nombre" className="form-label">Nombre y apellido</label>
+                            <label htmlFor="nombre" className="form-label text-dark">Nombre y apellidos:</label>
                             <input type="text" className="form-control" name="nombre" />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <input type="email" className="form-control" name="email" />
+                            <label htmlFor="exampleInputEmail1" className="form-label text-dark">Correo electrónico:</label>
+                            <input type="email" className="form-control" name="correo" />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="repEmail" className="form-label">Repetir Email</label>
-                            <input type="email" className="form-control" name="repEmail" />
+                            <label htmlFor="exampleInputPassword1" className="form-label text-dark">Número telefónico:</label>
+                            <input type="number" className="form-control" name="teléfono" />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="celular" className="form-label">Numero telefonico</label>
-                            <input type="number" className="form-control" name="celular" />
+                            <label htmlFor="consulta" className="form-label text-dark">Dirección:</label>
+                            <textarea className="form-control" name="consulta" rows={3} defaultValue={""} />
                         </div>
-                        <div className="mb-3">
-                            <label htmlFor="direccion" className="form-label">Direccion</label>
-                            <input type="text" className="form-control" name="direccion" />
+                        <div className="d-flex justify-content-center">
+                            <button type="submit" className="btn btn-dark" style={{ width: 500 }}>Finalizar compra</button>
                         </div>
-
-                        <button type="submit" className="btn btn-primary">Finalizar Compra</button>
                     </form>
                 </div>
             }

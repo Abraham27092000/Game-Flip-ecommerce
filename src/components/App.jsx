@@ -14,10 +14,12 @@ import { ItemListContainer } from "./ItemListContainer/ItemListContainer";
 import { ItemDetailContainer } from "./ItemDetailContainer/ItemDetailContainer";
 import { Contacto } from "./Contacto/Contacto";
 import { Cart } from './Cart/Cart';
+import { Checkout } from './Checkout/Checkout';
 
 //Context
 import { CartProvider } from '../context/CartContext';
 
+//cargarBDD()
 const App = () => {
 
   return (
@@ -31,6 +33,7 @@ const App = () => {
             <Route path='/category/:idCategoria' element={<ItemListContainer />} />
             <Route path='/contacto' element={<Contacto />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/checkout' element={<Checkout />} />
           </Routes>
           <ToastContainer />
         </CartProvider>

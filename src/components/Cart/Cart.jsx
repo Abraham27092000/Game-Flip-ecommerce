@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { ItemList } from "../ItemList/ItemList"
+import { ItemCart } from "../ItemCart/ItemCart"
 import { useCartContext } from "../../context/CartContext"
 export const Cart = () => {
     const { cart, totalPrice, emptyCart } = useCartContext()
@@ -13,9 +13,9 @@ export const Cart = () => {
                 </>
                 : //Si carrito tiene productos
                 <div className="container cartContainer">
-                    {<ItemList products={cart} plantilla={'itemCart'} />}
+                    {cart.map((item)=> <ItemCart key={item.id} item={item}/>)}
                     <div className="divButtons">
-                        <p>Resumen de la compra: $ {new Intl.NumberFormat('de-DE').format(totalPrice())}</p>
+                        <p>Resumen de la compra: EUR {new Intl.NumberFormat('de-DE').format(totalPrice())}</p>
                         <button className="btn btn-danger" onClick={() => emptyCart()}>Vaciar carrito</button>
                         <Link className="nav-link" to={'/'}><button className="btn btn-dark">Continuar Comprando</button></Link>
                         <Link className="nav-link" to={'/checkout'}><button className="btn btn-dark">Finalizar compra</button></Link>
@@ -26,7 +26,6 @@ export const Cart = () => {
     )
 
 }
-
 
 
 /*

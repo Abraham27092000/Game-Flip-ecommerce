@@ -26,7 +26,10 @@ export const Checkout = () => {
 
         createOrdenCompra(cliente, aux, totalPrice(), new Date().toISOString()).then(ordenCompra => {
             toast.success(`¡Gracias por su compra!. Id de compra: ${ordenCompra.id
-                } por un total de EUR ${new Intl.NumberFormat('de-DE').format(totalPrice())} fue realizada con exito`)
+                } por un total de EUR ${new Intl.NumberFormat('de-DE').format(totalPrice())} fue realizada con exito`, {
+                    pauseOnHover: false,
+                    theme: "dark",
+                });
             emptyCart()
             e.target.reset()
             navigate("/")

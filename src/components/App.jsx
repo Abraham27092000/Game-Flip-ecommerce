@@ -19,9 +19,10 @@ import { Checkout } from './Checkout/Checkout';
 //Context
 import { CartProvider } from '../context/CartContext';
 
-//cargarBDD()
-const App = () => {
+//import { cargarBDD } from '../firebase/firebase';
 
+const App = () => {
+  //cargarBDD()
   return (
     <>
       <BrowserRouter>

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, doc, addDoc, getDoc, getDocs, updateDoc, deleteDoc } from 'firebase/firestore'
+import { getFirestore, collection, doc, addDoc, getDoc, getDocs, updateDoc, deleteDoc, query, where } from 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: process.env.API_KEY,
@@ -15,7 +15,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 //Consultar la BDD
-const db = getFirestore()
+const db = getFirestore(app)
 
 /*
     CRUD PRODUCTOS
@@ -40,8 +40,9 @@ export const cargarBDD = async () => {
     })
 }
 
-export const getProductos = async () => {
-    const productos = await getDocs(collection(db, "productos"))
+export const getProductos = async (categoria) => {
+    const coleccionProductos= categoria ? query(collection(db, "productos"), where("idCategoria", "==", categoria)) : collection(db, "productos")
+    const productos = await getDocs(coleccionProductos)
     const items = productos.docs.map(prod => {
         return { ...prod.data(), id: prod.id }
     })

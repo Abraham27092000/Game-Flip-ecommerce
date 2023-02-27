@@ -11,6 +11,7 @@ export const Checkout = () => {
     let navigate = useNavigate()
 
     const [user, setUser] = useState({ nombre: '', telefono: '', correo: '', correo2: '', direccion: '' })
+    console.log (user);
 
     if (user.correo === user.correo2) {
         //logica de la orden

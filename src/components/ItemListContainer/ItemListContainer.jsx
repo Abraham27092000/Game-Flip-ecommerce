@@ -5,11 +5,12 @@ import { useParams } from 'react-router-dom'
 import { ItemList } from '../ItemList/ItemList'
 
 //Firebase
-import { getProductos } from '../../firebase/firebase'
+import { getProductos, query, orderBy} from '../../firebase/firebase'
 
 export const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
     const { idCategoria } = useParams()
+    const q = query(idCategoria, orderBy.filter("category"));
     useEffect(() => {
     if (idCategoria) {
         getProductos()

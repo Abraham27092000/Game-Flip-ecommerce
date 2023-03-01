@@ -1,7 +1,13 @@
 import { useCartContext } from "../../context/CartContext"
+import { ItemCount } from "../ItemCount/ItemCount"
 
 export const ItemCart = ({ item }) => {
-    const { removeItem } = useCartContext()
+    const { removeItem, addItem } = useCartContext()
+
+
+    const onAdd = (cantidad) => { //Agregar el producto al carrito
+        addItem(item, cantidad)
+    }
 
     return (
         <div className="card mb-3 cardCart">
@@ -13,8 +19,9 @@ export const ItemCart = ({ item }) => {
                     <div className="card-body">
                         <h5 className="card-title">{item.nombre} {item.modelo}</h5>
                         <p className="card-text">Cantidad: {item.cant}</p>
-                        <p className="card-text">Precio Unitario: $ {new Intl.NumberFormat('de-DE').format(item.precio)}</p>
-                        <p className="card-text">Subtotal: $ {new Intl.NumberFormat('de-DE').format(item.precio * item.cant)}</p>
+                        <p className="card-text">Precio Unitario: {new Intl.NumberFormat('de-DE').format(item.precio)} EUR </p>
+                        <p className="card-text">Subtotal: {new Intl.NumberFormat('de-DE').format(item.precio * item.cant)} EUR </p>
+                        <ItemCount valorInicial={1} stock={item.stock} onAdd={onAdd} />
                         <button className="btn btn-danger" onClick={() => removeItem(item.id)}>Eliminar del Carrito</button>
                     </div>
                 </div>

@@ -95,7 +95,7 @@ export const Checkout = () => {
                             <textarea className="form-control" name="direccion" rows={3} defaultValue={""} />
                         </div>
                         <div className="d-flex justify-content-center">
-                            <button type="submit" className="btn btn-dark" style={{ width: 500 }}>Finalizar compra</button>
+                            <button type="submit" className="btn btn-secondary" style={{ width: 500 }}>Finalizar compra</button>
                         </div>
                     </form>
                 </div>

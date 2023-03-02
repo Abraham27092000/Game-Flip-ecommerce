@@ -7,18 +7,18 @@ export const Cart = () => {
         <>
             {cart.length === 0
                 ? //Si carrito esta vacio
-                <>
-                    <h2>Carrito vacio</h2>
-                    <Link className="nav-link" to={'/'}><button className="btn btn-dark">Continuar comprando</button></Link>
-                </>
+                <div>
+                    <h2 className="ms-2">Carrito vacio</h2>
+                    <Link className="nav-link" to={'/'}><button className="btn btn-secondary ms-2">Continuar comprando</button></Link>
+                </div>
                 : //Si carrito tiene productos
                 <div className="container cartContainer">
                     {cart.map((item)=> <ItemCart key={item.id} item={item}/>)}
-                    <div className="divButtons">
-                        <p>Resumen de la compra: {new Intl.NumberFormat('de-DE').format(totalPrice())} EUR</p>
-                        <button className="btn btn-danger" onClick={() => emptyCart()}>Vaciar carrito</button>
-                        <Link className="nav-link" to={'/'}><button className="btn btn-dark">Continuar Comprando</button></Link>
-                        <Link className="nav-link" to={'/checkout'}><button className="btn btn-dark">Finalizar compra</button></Link>
+                    <div className="ms-1">
+                        <p className="text-dark">Resumen de la compra: {new Intl.NumberFormat('de-DE').format(totalPrice())} EUR</p>
+                        <button className="btn btn-danger mb-2" onClick={() => emptyCart()}>Vaciar carrito</button>
+                        <Link className="nav-link mb-2" to={'/'}><button className="btn btn-success">Continuar Comprando</button></Link>
+                        <Link className="nav-link mb-2" to={'/checkout'}><button className="btn btn-secondary">Finalizar compra</button></Link>
                     </div>
                 </div>
             }

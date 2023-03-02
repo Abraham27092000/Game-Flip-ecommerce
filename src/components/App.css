@@ -9,6 +9,16 @@ h1{
 }
 
 .productos{
-    justify-content: space-evenly
+    display:flex;
+    justify-content: space-evenly;
+    
+    
 }
 
+.productos__titulo{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.productos__img__detail{
+    width: 18.5em;
+}

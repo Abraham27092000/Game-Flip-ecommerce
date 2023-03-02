@@ -3,7 +3,7 @@ import Secciones from "./Secciones/Secciones";
 import Categorias from "./Categorias/Categorias";
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg bg-dark d-flex">
+        <nav className="navbar navbar-expand-lg bg-dark d-flex mb-3">
             <div className="container-fluid">
                 <img className="logo" src="../logo.png" alt="logo" style={{ width: "4em" }} />
                     <h1 className="ms-3 me-3">Game-Flip</h1>

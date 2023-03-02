@@ -19,12 +19,12 @@ export const ItemCount = ({ valorInicial, stock, onAdd }) => {
 
 
     return (
-        <>
-            <button className="btn btn-success" onClick={() => restarCounter()}>-</button>
-            {contador}
-            <button className="btn btn-success" onClick={() => sumarCounter()} >+</button>
-            <button className="btn btn-dark" onClick={() => agregarCarrito()}>Agregar al carrito</button>
-        </>
+        <div className="d-flex justify-content-center">
+            <button className="btn btn-light text-secondary" onClick={() => restarCounter()}>-</button>
+            <section className="text-success d-flex align-items-center">{contador}</section>
+            <button className="btn btn-light text-secondary" onClick={() => sumarCounter()} >+</button>
+            <button className="btn btn-primary ms-3" onClick={() => agregarCarrito()}>Agregar al carrito</button>
+        </div>
     )
 }
 

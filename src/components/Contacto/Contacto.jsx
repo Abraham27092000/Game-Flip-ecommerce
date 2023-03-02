@@ -40,7 +40,7 @@ export const Contacto = () => {
                     <textarea className="form-control" name="consulta" rows={3} defaultValue={""} />
                 </div>
                 <div className="d-flex justify-content-center">
-                    <button type="submit" className="btn btn-dark" style={{ width: 500 }}>Enviar Mensaje</button>
+                    <button type="submit" className="btn btn-secondary" style={{ width: 500 }}>Enviar Mensaje</button>
                 </div>
             </form>
         </div>

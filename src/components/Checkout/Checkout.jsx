@@ -72,7 +72,7 @@ export const Checkout = () => {
                     <Link className="nav-link" to={'/'}><button className="btn btn-dark">Continuar comprando</button></Link>
                 </>
                 :
-                <div className="container d-flex justify-content-center" style={{ marginTop: "2em" }}>
+                <div className="container d-flex justify-content-center" style={{ marginTop: "1em" }}>
                     <form onSubmit={consultarFormulario} ref={datosFormulario}>
                         <div className="mb-3">
                             <label htmlFor="nombre" className="form-label text-dark">Nombre y apellidos:</label>
@@ -94,7 +94,7 @@ export const Checkout = () => {
                             <label htmlFor="consulta" className="form-label text-dark">Dirección:</label>
                             <textarea className="form-control" name="direccion" rows={3} defaultValue={""} />
                         </div>
-                        <div className="d-flex justify-content-center">
+                        <div className="d-flex justify-content-center mb-3">
                             <button type="submit" className="btn btn-secondary" style={{ width: 500 }}>Finalizar compra</button>
                         </div>
                     </form>
